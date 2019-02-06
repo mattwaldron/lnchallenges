@@ -1,4 +1,4 @@
-﻿using SafeQueensChallenge;
+﻿using CodingChallengeFramework;
 
 namespace QueensCodingChallenge
 {

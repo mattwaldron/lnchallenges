@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using SafeQueensChallenge;
+using CodingChallengeFramework;
 
 // Challenge:
 // Implement the Run function below, which takes an integer and returns an integer.

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SafeQueensChallenge;
+using CodingChallengeFramework;
 
 namespace QueensCodingChallenge
 {
