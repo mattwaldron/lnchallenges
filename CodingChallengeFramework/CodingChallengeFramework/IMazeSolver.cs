@@ -25,12 +25,26 @@ namespace CodingChallengeFramework
 
         public void Run(IEnumerable<string> args)
         {
-            var argArray = args.ToArray();
-            
+            var argArray = args.ToList();
+            if (argArray.Count < 1)
+            {
+                argArray.Add("2");
+            }
+            if (argArray.Count < 2)
+            {
+                argArray.Add(argArray[0]);
+            }
+
             Compose();
 
-            var maze = MazeGenerator.GetMaze(Convert.ToInt32(argArray[1]), Convert.ToInt32(argArray[2]));
-            
+            var maze = MazeGenerator.GetMaze(Convert.ToInt32(argArray[0]), Convert.ToInt32(argArray[1]));
+            Console.WriteLine("Testing against the following maze:");
+            foreach (var row in maze)
+            {
+                Console.WriteLine(row);
+            }
+            Console.WriteLine("");
+
             var sw = new Stopwatch();
             foreach (var q in mazeSolvers)
             {
