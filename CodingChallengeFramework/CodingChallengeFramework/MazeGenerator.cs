@@ -13,41 +13,49 @@ namespace CodingChallengeFramework
         public static string[] GetMaze(int x, int y)
         {
             var m = Maze(x, y);
-            var rows = new List<string>();
-            var b = $"X";
-            rows.Add(Enumerable.Repeat(b, (2 * m.GetLength(0)) + 1).Aggregate("", string.Concat));
+            var rows = new List<List<char>>();
+            var b = 'X';
+            rows.Add(Enumerable.Repeat(b, (2 * m.GetLength(0)) + 1).ToList());
             for (var j = 0; j < m.GetLength(1); j++)
             {
-                var thisRow = b;
-                var nextRow = b;
+                var thisRow = new List<char> { b };
+                var nextRow = new List<char> { b };
                 for (var i = 0; i < m.GetLength(0); i++)
                 {
-                    thisRow += " ";
+                    thisRow.Add(' ');
 
-                    thisRow += (i == m.GetLength(0) - 1)
+                    thisRow.Add((i == m.GetLength(0) - 1)
                         ? b
                         : (m[i, j].connections.Contains(m[i + 1, j]))
-                            ? " "
-                            : b;
-                    nextRow += (j == m.GetLength(1) - 1)
+                            ? ' '
+                            : b);
+                    nextRow.Add((j == m.GetLength(1) - 1)
                         ? b
                         : (m[i, j].connections.Contains(m[i, j + 1]))
-                            ? " "
-                            : b;
-                    nextRow += b;
+                            ? ' '
+                            : b);
+                    nextRow.Add(b);
                 }
                 rows.Add(thisRow);
                 rows.Add(nextRow);
             }
 
-            var ca = rows[1].ToCharArray();
-            ca[1] = 'S';
-            rows[1] = string.Join("", ca);
-            ca = rows[rows.Count - 2].ToCharArray();
-            ca[ca.Length - 2] = 'F';
-            rows[rows.Count - 2] = string.Join("", ca);
+            rows[1][1] = 'S';
+            rows[rows.Count - 2][rows[rows.Count - 2].Count - 2] = 'F';
 
-            return rows.ToArray();
+            var rand = new Random();
+            var nErodedWalls = (int)Math.Round(Math.Pow(x * y, 0.33));
+            while (nErodedWalls-- > 0)
+            {
+                var rx = rand.Next(rows[0].Count - 2) + 1;
+                var ry = rand.Next(rows.Count - 2) + 1;
+                if (rows[ry][rx] == 'X')
+                {
+                    rows[ry][rx] = ' ';
+                }
+            }
+
+            return rows.Select(r => new string(r.ToArray())).ToArray();
         }
         
         class Node
@@ -82,7 +90,7 @@ namespace CodingChallengeFramework
             if (c == 1 || c == 2)
             {
                 x *= -1;
-                y += -1;
+                y *= -1;
             }
             return (x, y);
         }

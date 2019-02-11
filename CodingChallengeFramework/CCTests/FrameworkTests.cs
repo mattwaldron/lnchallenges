@@ -10,7 +10,7 @@ namespace CCTests
         [TestMethod]
         public void Maze()
         {
-            var m = MazeGenerator.GetMaze(7, 11);
+            var m = MazeGenerator.GetMaze(4, 4);
             foreach (var row in m)
             {
                 Console.WriteLine(row);
