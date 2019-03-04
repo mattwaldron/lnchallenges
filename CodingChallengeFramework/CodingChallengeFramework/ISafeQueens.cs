@@ -50,10 +50,17 @@ namespace CodingChallengeFramework
         {
             var catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
-            foreach (var f in Directory.EnumerateFiles("solutions"))
+            try
             {
-                catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFile(Path.GetFullPath(f))));
+                foreach (var f in Directory.EnumerateFiles("solutions"))
+                {
+                    catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFile(Path.GetFullPath(f))));
+                }
             }
+            catch
+            {
+            }
+
             var container = new CompositionContainer(catalog);
             container.ComposeParts(this);
         }

@@ -20,6 +20,10 @@ namespace CodingChallengeFramework
             {
                 c = new MazeSolverChallenge();
             }
+            else if (args[0].Contains("soup"))
+            {
+                c = new SoupServingsChallenge();
+            }
             c.Run(args.Skip(1));
         }
     }
