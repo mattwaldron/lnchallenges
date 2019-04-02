@@ -11,7 +11,7 @@ namespace CodingChallengeFramework
     {
         static void Main(string[] args)
         {
-            IChallenge c = new DefaultChallenge();
+            Challenge c = new DefaultChallenge();
             if (args[0].Contains("queens"))
             {
                 c = new SafeQueensChallenge();
@@ -23,6 +23,10 @@ namespace CodingChallengeFramework
             else if (args[0].Contains("soup"))
             {
                 c = new SoupServingsChallenge();
+            }
+            else if (args[0].Contains("change"))
+            {
+                c = new MakeChangeChallenge();
             }
             c.Run(args.Skip(1));
         }

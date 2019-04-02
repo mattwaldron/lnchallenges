@@ -40,7 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MattDynaFullCache.cs" />
+    <Compile Include="MattDynaSoup.cs" />
+    <Compile Include="MattNativeRecurseCache.cs" />
+    <Compile Include="MattNativeRecurse.cs" />
     <Compile Include="MattProbSpread.cs" />
+    <Compile Include="MattShared.cs" />
     <Compile Include="SoupServings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

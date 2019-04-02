@@ -8,7 +8,7 @@ using CodingChallengeFramework;
 
 namespace SoupServings
 {
-    class SoupServings : ISoupServings
+    class SoupServings /*: ISoupServings*/
     {
         public double Run(int volume)
         {

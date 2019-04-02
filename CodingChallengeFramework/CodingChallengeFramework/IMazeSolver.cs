@@ -17,13 +17,13 @@ namespace CodingChallengeFramework
         int Run(string [] maze);
     }
 
-    public class MazeSolverChallenge : IChallenge
+    public class MazeSolverChallenge : Challenge
 
     {
         [ImportMany(typeof(IMazeSolver), AllowRecomposition = true)]
         protected IMazeSolver[] mazeSolvers = null;
 
-        public void Run(IEnumerable<string> args)
+        public override void Run(IEnumerable<string> args)
         {
             var argArray = args.ToList();
             if (argArray.Count < 1)
@@ -61,23 +61,6 @@ namespace CodingChallengeFramework
                 }
                 Console.WriteLine($"{q.GetType().Name} (in {sw.ElapsedMilliseconds} ms) << {answer}");
             }
-        }
-
-        public void Compose()
-        {
-            var catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
-            try
-            {
-                foreach (var f in Directory.EnumerateFiles("solutions"))
-                {
-                    catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFile(Path.GetFullPath(f))));
-                }
-            }
-            catch {}
-
-            var container = new CompositionContainer(catalog);
-            container.ComposeParts(this);
         }
     }
 }

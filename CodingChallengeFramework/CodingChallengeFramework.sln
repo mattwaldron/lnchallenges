@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCTests", "CCTests\CCTests.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoupServings", "SoupServings\SoupServings.csproj", "{B92EC201-BAF3-407B-9B35-1FDCF4074EA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeChange", "MakeChange\MakeChange.csproj", "{0E657C5F-972E-47FD-A63D-21B8E7BF8230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B92EC201-BAF3-407B-9B35-1FDCF4074EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B92EC201-BAF3-407B-9B35-1FDCF4074EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B92EC201-BAF3-407B-9B35-1FDCF4074EA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E657C5F-972E-47FD-A63D-21B8E7BF8230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E657C5F-972E-47FD-A63D-21B8E7BF8230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E657C5F-972E-47FD-A63D-21B8E7BF8230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E657C5F-972E-47FD-A63D-21B8E7BF8230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

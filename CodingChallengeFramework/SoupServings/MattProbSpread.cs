@@ -10,81 +10,7 @@ using CodingChallengeFramework;
 
 namespace SoupServings
 {
-    enum ServeEvent
-    {
-        AEmpty,
-        ABEmpty,
-        Served
-    }
-
-    enum PotStatus
-    {
-        BothAvailable,
-        OnlyA,
-        OnlyB,
-        Empty
-    }
-
-    class Ratio
-    {
-        public int a;
-        public int b;
-
-        public PotStatus Status
-        {
-            get
-            {
-                if (a <= 0 && b <= 0)
-                {
-                    return PotStatus.Empty;
-                }
-
-                if (a <= 0)
-                {
-                    return PotStatus.OnlyB;
-                }
-
-                if (b <= 0)
-                {
-                    return PotStatus.OnlyA;
-                }
-
-                return PotStatus.BothAvailable;
-            }
-        }
-
-        public Ratio(int aa, int bb)
-        {
-            a = aa;
-            b = bb;
-        }
-
-        public ServeEvent Serve(Ratio serving)
-        {
-            var preServe = Status;
-            a -= serving.a;
-            b -= serving.b;
-            var postServe = Status;
-            if (preServe == postServe)
-            {
-                return ServeEvent.Served;
-            }
-
-            if (postServe == PotStatus.OnlyB)
-            {
-                return ServeEvent.AEmpty;
-            }
-
-            if (preServe == PotStatus.BothAvailable && postServe == PotStatus.Empty)
-            {
-                return ServeEvent.ABEmpty;
-            }
-
-            return ServeEvent.Served;
-        }
-    }
-
-    class MattProbSpread : ISoupServings
+    public class MattProbSpread : ISoupServings
     {
         private static List<Ratio> servings;
 
@@ -97,11 +23,41 @@ namespace SoupServings
             servings.Add(new Ratio(25, 75));
         }
 
-
         public double Run(int volume)
         {
-            var pots = new Ratio(volume, volume);
-            throw new NotImplementedException();
+            double probAEmptyFirst = 0;
+            double probABEmptyTogether = 0;
+            var pots = new List<(Ratio, int)>()
+            {
+                (new Ratio(volume, volume), 1)
+            };
+            while (pots.Count != 0)
+            {
+                var (thisRatio, gen) = pots[0];
+                pots.RemoveAt(0);
+                foreach (var s in servings)
+                {
+                    var newRatio = thisRatio.Copy();
+                    var ev = newRatio.Serve(s);
+                    switch (ev)
+                    {
+                        case ServeEvent.ABEmpty:
+                            probABEmptyTogether += (1.0 / (Math.Pow(servings.Count, gen)));
+                            break;
+                        case ServeEvent.AEmpty:
+                            probAEmptyFirst += (1.0 / (Math.Pow(servings.Count, gen)));
+                            break;
+                        default:
+                            if (newRatio.Status == PotStatus.BothAvailable)
+                            {
+                                pots.Add((newRatio, gen + 1));
+                            }
+                            break;
+                    }
+                }
+            }
+
+            return probAEmptyFirst + 0.5 * probABEmptyTogether;
         }
     }
 }

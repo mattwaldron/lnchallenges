@@ -11,30 +11,31 @@ using System.Threading.Tasks;
 
 namespace CodingChallengeFramework
 {
-    [InheritedExport(typeof(ISoupServings))]
-    public interface ISoupServings
+    [InheritedExport(typeof(IMakeChange))]
+    public interface IMakeChange
     {
-        double Run(int volume);
+        int Run(int change, int[] denominations);
     }
 
-    public class SoupServingsChallenge : Challenge
+    public class MakeChangeChallenge : Challenge
 
     {
-        [ImportMany(typeof(ISoupServings), AllowRecomposition = true)]
-        protected ISoupServings[] soupServings = null;
+        [ImportMany(typeof(IMakeChange), AllowRecomposition = true)]
+        protected IMakeChange[] changeMakers = null;
 
         public override void Run(IEnumerable<string> args)
         {
             var n = Convert.ToInt32(args.First());
+            var denoms = args.Skip(1).Select(x => Convert.ToInt32(x)).ToArray();
             Compose();
             var sw = new Stopwatch();
-            foreach (var q in soupServings)
+            foreach (var q in changeMakers)
             {
                 string answer = "";
                 sw.Restart();
                 try
                 {
-                    var result = q.Run(n);
+                    var result = q.Run(n, denoms);
                     answer = $"{result}";
                 }
                 catch (Exception ex)

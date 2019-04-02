@@ -60,6 +60,10 @@
       <Project>{fe4950a4-1ca0-4e98-959e-8873abe59d5a}</Project>
       <Name>CodingChallengeFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SoupServings\SoupServings.csproj">
+      <Project>{b92ec201-baf3-407b-9b35-1fdcf4074ea5}</Project>
+      <Name>SoupServings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
