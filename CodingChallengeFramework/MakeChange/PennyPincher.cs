@@ -10,9 +10,9 @@ namespace MakeChange
     // Duplicate or replace this class with your own and give it a unique name
     public class PennyPincher : IMakeChange
     {
-        public int Run(int change, int[] denominations)
+        public int Run(long change, int[] denominations)
         {
-            return (change + 1) / denominations.Min();
+            return (int)((change + 1) / denominations.Min());
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CodingChallengeFramework;
 using SoupServings;
+using MakeChange;
 
 namespace CCTests
 {
@@ -46,6 +47,14 @@ namespace CCTests
                 var vv = v * 50;
                 Trace.WriteLine($"N = {vv}");
             }
+        }
+
+        [TestMethod]
+        public void MattChange_Misc()
+        {
+            var mc = new MattRecurseDoubleBack();
+            Assert.AreEqual(1, mc.Run(59, new[] { 1, 8, 47, 47, 52, 54 }));
+
         }
 
     }

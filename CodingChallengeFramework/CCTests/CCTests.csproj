@@ -60,6 +60,10 @@
       <Project>{fe4950a4-1ca0-4e98-959e-8873abe59d5a}</Project>
       <Name>CodingChallengeFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MakeChange\MakeChange.csproj">
+      <Project>{0e657c5f-972e-47fd-a63d-21b8e7bf8230}</Project>
+      <Name>MakeChange</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SoupServings\SoupServings.csproj">
       <Project>{b92ec201-baf3-407b-9b35-1fdcf4074ea5}</Project>
       <Name>SoupServings</Name>
