@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MattRecurseWithMod.cs" />
     <Compile Include="MattBigCoinsFirst.cs" />
     <Compile Include="MattRecurseDoubleBack.cs" />
     <Compile Include="PennyPincher.cs" />
