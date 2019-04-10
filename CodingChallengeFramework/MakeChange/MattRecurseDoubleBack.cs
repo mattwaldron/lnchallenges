@@ -35,10 +35,10 @@ namespace MakeChange
             }
             if (change >= denominations[0])
             {
-                return Math.Min(EasyChange(change, denominations.ToArray(), coins),
+                return Math.Min(EasyChange(change-denominations[0], denominations, coins+1),
                         MakeChange(change, denominations.Skip(1).ToArray(), coins));
             }
-            return MakeChange(change, denominations.Where(x => x < change).ToArray(), coins);
+            return MakeChange(change, denominations.Skip(1).ToArray(), coins);
         }
 
         public int Run(long change, int[] denominations)

@@ -7,7 +7,7 @@ using CodingChallengeFramework;
 
 namespace MakeChange
 {
-    public class MattRecurseWithMod /*: IMakeChange*/
+    public class MattRecurseWithMod : IMakeChange
     {
         int bestMin = int.MaxValue;
         public int EasyChange(long change, int[] denominations, int coins)
@@ -51,11 +51,12 @@ namespace MakeChange
                 }
                 else
                 {
-                    return Math.Min(EasyChange(change, denominations, coins),
+                    return Math.Min(MakeChange(change - denominations[0], denominations, coins+1),
                         MakeChange(change, denominations.Skip(1).ToArray(), coins));
                 }
             }
-            return MakeChange(change, denominations.Where(x => x < change).ToArray(), coins);
+
+            return MakeChange(change, denominations.Skip(1).ToArray(), coins);
         }
 
         public int Run(long change, int[] denominations)
