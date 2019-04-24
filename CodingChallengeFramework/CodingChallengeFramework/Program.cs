@@ -28,6 +28,10 @@ namespace CodingChallengeFramework
             {
                 c = new MakeChangeChallenge();
             }
+            else if (args[0].Contains("opjumble"))
+            {
+                c = new OperatorJumbleChallenge();
+            }
             c.Run(args.Skip(1));
         }
     }

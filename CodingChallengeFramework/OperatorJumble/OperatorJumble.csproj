@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE4950A4-1CA0-4E98-959E-8873ABE59D5A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>CodingChallengeFramework</RootNamespace>
-    <AssemblyName>CodingChallengeFramework</AssemblyName>
+    <ProjectGuid>{7FE9EF88-E9D7-4528-BC4B-EA86EFA3643A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OperatorJumble</RootNamespace>
+    <AssemblyName>OperatorJumble</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,18 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMakeChange.cs" />
-    <Compile Include="IMazeSolver.cs" />
-    <Compile Include="IChallenge.cs" />
-    <Compile Include="ISoupServings.cs" />
-    <Compile Include="MazeGenerator.cs" />
-    <Compile Include="OperatorJumble.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="RandomAddition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISafeQueens.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\CodingChallengeFramework\CodingChallengeFramework.csproj">
+      <Project>{fe4950a4-1ca0-4e98-959e-8873abe59d5a}</Project>
+      <Name>CodingChallengeFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
