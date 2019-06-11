@@ -42,39 +42,45 @@ namespace OperatorJumble
             {
                 if (parallel)
                 {
-                    Parallel.ForEach (index, kv1 =>
-                    {
-                        Parallel.ForEach(index, kv2 =>
-                        {
-                            if (kv1.Key + kv2.Key == level)
-                            {
-                                Parallel.ForEach(index[kv1.Key], i1 =>
-                                {
-                                    Parallel.ForEach(index[kv2.Key], i2 =>
-                                    {
-                                        if (i1.max + 1 == i2.min)
-                                        {
-                                            Parallel.ForEach(ops, op =>
-                                            {
-                                                try
-                                                {
-                                                    var v = evalDict[op](i1.val, i2.val);
-                                                    if (v != Int32.MaxValue && !compDict.ContainsKey((v, i1.min, i2.max)))
-                                                    {
-
-                                                        compDict[((v, i1.min, i2.max))] = exprDict[op](compDict[(i1.val, i1.min, i1.max)], compDict[(i2.val, i2.min, i2.max)]);
-                                                        index[level].Add((v, i1.min, i2.max));
-
-                                                    }
-                                                }
-                                                catch { }
-                                            });
-                                        }
-                                    });
-                                });
-                            }
-                        });
-                    });
+                    Parallel.ForEach(index, kv1 =>
+                   {
+                       Parallel.ForEach(index, kv2 =>
+                       {
+                           if (kv1.Key + kv2.Key == level)
+                           {
+                               Parallel.ForEach(index[kv1.Key], i1 =>
+                               {
+                                   Parallel.ForEach(index[kv2.Key], i2 =>
+                                   {
+                                       if (i1.max + 1 == i2.min)
+                                       {
+                                           Parallel.ForEach(ops, op =>
+                                           {
+                                               try
+                                               {
+                                                   var v = evalDict[op](i1.val, i2.val);
+                                                   if (v != Int32.MaxValue)
+                                                   {
+                                                       var expr = exprDict[op](compDict[(i1.val, i1.min, i1.max)], compDict[(i2.val, i2.min, i2.max)]);
+                                                       if (!compDict.ContainsKey((v, i1.min, i2.max)))
+                                                       {
+                                                           compDict[((v, i1.min, i2.max))] = expr;
+                                                           index[level].Add((v, i1.min, i2.max));
+                                                       }
+                                                       else if (CountOps(compDict[(v, i1.min, i2.max)]) > CountOps(expr))
+                                                       {
+                                                           compDict[((v, i1.min, i2.max))] = expr;
+                                                       }
+                                                   }
+                                               }
+                                               catch { }
+                                           });
+                                       }
+                                   });
+                               });
+                           }
+                       });
+                   });
                 }
                 else
                 {
@@ -95,12 +101,18 @@ namespace OperatorJumble
                                                 try
                                                 {
                                                     var v = evalDict[op](i1.val, i2.val);
-                                                    if (v != Int32.MaxValue && !compDict.ContainsKey((v, i1.min, i2.max)))
+                                                    if (v != Int32.MaxValue)
                                                     {
-
-                                                        compDict[((v, i1.min, i2.max))] = exprDict[op](compDict[(i1.val, i1.min, i1.max)], compDict[(i2.val, i2.min, i2.max)]);
-                                                        index[level].Add((v, i1.min, i2.max));
-
+                                                        var expr = exprDict[op](compDict[(i1.val, i1.min, i1.max)], compDict[(i2.val, i2.min, i2.max)]);
+                                                        if (!compDict.ContainsKey((v, i1.min, i2.max)))
+                                                        {
+                                                            compDict[((v, i1.min, i2.max))] = expr;
+                                                            index[level].Add((v, i1.min, i2.max));
+                                                        }
+                                                        else if (CountOps(compDict[(v, i1.min, i2.max)]) > CountOps(expr))
+                                                        {
+                                                            compDict[((v, i1.min, i2.max))] = expr;
+                                                        }
                                                     }
                                                 }
                                                 catch { }

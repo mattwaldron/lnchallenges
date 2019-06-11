@@ -33,7 +33,10 @@ namespace OperatorJumble
                 } },
             {Op.A, (a, b) => a + b},
             {Op.S, (a, b) => a - b},
-            {Op.E, (a, b) => checked((Int32) Math.Pow((double) a, (double) b))},
+            {Op.E, (a, b) => {
+                if (b < 0) { return Int32.MaxValue; }
+                else {return checked((Int32) Math.Pow((double) a, (double) b)); }
+                } },
             {Op.C, (a, b) => (a >= 0 && b >= 0) ? Convert.ToInt32($"{a}{b}") : Int32.MaxValue}
         };
 
@@ -44,8 +47,13 @@ namespace OperatorJumble
             {Op.A, (a, b) => $"({a} + {b})"},
             {Op.S, (a, b) => $"({a} - {b})"},
             {Op.E, (a, b) => $"({a} ^ {b})"},
-            {Op.C, (a, b) => $"({a} || {b})"}
+            {Op.C, (a, b) => $"({a} | {b})"}
         };
+
+        public static int CountOps(string s)
+        {
+            return s.Count(c => "*/+-^|".Contains(c));
+        }
 
         public LookupDict LookupDictWithGroupings(bool parallel = false)
         {

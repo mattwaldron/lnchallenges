@@ -10,7 +10,7 @@ using LookupIndex = System.Collections.Generic.Dictionary<int, System.Collection
 
 namespace OperatorJumble
 {
-    public partial class MattTreeSearch : IOperatorJumble
+    public partial class MattTreeSearch /*: IOperatorJumble*/
     {
 
         public LookupDict LookupDictWithGroupingsAbs(bool parallel = false)
