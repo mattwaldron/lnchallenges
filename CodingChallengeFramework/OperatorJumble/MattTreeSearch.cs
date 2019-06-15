@@ -121,16 +121,12 @@ namespace OperatorJumble
 
         public string Run(int n)
         {
-            var compDict = BuildCompDict(9);
-            /*using (var f = new StreamWriter($"C:\\Users\\waldr\\Documents\\opjum\\seqIndexOut{level}.csv"))
-            {
-                foreach (var kv in compDict.Where(x => (x.Key.max - x.Key.min + 1 == level) && (x.Key.val > 0)).OrderBy(x => x.Key.val))
-                {
-                    f.WriteLine($"{kv.Key.val}, {kv.Value}");
-                }
-            }*/
+            /*var compDict = BuildCompDict(9);
             return (compDict.ContainsKey((n, 1, 9)))
                 ? compDict[(n, 1, 9)]
+                : "No solution";*/
+            return results.ContainsKey(n)
+                ? results[n]
                 : "No solution";
         }
     }
