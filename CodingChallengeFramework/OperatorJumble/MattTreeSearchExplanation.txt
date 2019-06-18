@@ -1,0 +1,38 @@
+Initialization:
+Generate all combinations of grouped numbers, e.g.:
+1, 2, 3, 4, 5, 6, 7, 8, 9
+12, 23, 34, 45, 56, 67, 78, 89
+123, 234, 345, 456, 567, 678, 789
+...
+12345678, 23456789
+123456789
+
+These will 'seed' all subsequent results that use operators.
+
+Iteration:
+Evaluate all combinations that will result in a certain number of numbers used, starting at 2.  For example, level 2 which contains 12, 23, 34, 45, 56, 67, 78, 89 is augmented with results by using each operator on adjacent values from level 1.  For example:
+1+2
+1-2
+1*2
+1/2
+1^2
+1|2
+
+The results are stored in a dictionary where the key is the result, lower number used, and higher number used, and the value is the resulting expression, e.g.:
+d[(3, 1, 2)] = "(1+2)"
+
+If the dictionary already contains a particular key (the same result generated from the same numbers),  it keeps the one with fewer operators (count of +-*/^|).  For example, "(1|2)" is discarded since the dictionary already contains "(12)", a grouping which counts as 0 operators.
+
+This is repeated for all levels up to 9 (expressions that contain all of 1 through 9).
+
+Rationale:
+The evaluation is done in levels since if all possible combinations were evaluated from the start (e.g.: 1 + 23456789), we would have to keep track of what combinations were evaluted so as not to repeat them on the next generation.  By building up levels (count of numbers used), each combination is evaluated once, when the sum of count of numbers in each operand is equal to the level of interest; i.e.: we intentionally wait to evaluate 1+23456789 until level 9.
+
+Optimization:
+Scanning the whole dictionary of expressions for combinations that yield the level of interest gets slow.  To speed-up, we keep an 'index', which is a list of keys of the dictionary for each level (count of numbers used).  This way, for a particular level of interest, we know we only need to go through the keys where the indices add up to the right value.  For example, when assessing level 4, we attempt to combine the values in level 1 with level 3, and all the keys of level 2 with itself.  The index is started with the first groupings, i.e.:
+index[1] = {1, 2, 3, 4, 5, 6, 7, 8, 9}
+index[2] = {12, 23, 34, 45, 56, 67, 78, 89}
+index[3] = {123, 234, 345, 456, 567, 678, 789}
+...
+index[8] = {12345678, 23456789}
+index[9] = {123456789}
