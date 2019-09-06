@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MattTreeSearchResults.cs" />
+    <Compile Include="MattTreeSearchStatics.cs" />
+    <Compile Include="MattTreeSearch.cs" />
     <Compile Include="RandomAddition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

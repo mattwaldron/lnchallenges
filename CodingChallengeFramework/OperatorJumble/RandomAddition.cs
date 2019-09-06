@@ -7,7 +7,7 @@ using CodingChallengeFramework;
 
 namespace OperatorJumble
 {
-    public class RandomAddition : IOperatorJumble
+    public class RandomAddition /*: IOperatorJumble*/
     {
         public string Run(int n)
         {

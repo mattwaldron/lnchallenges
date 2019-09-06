@@ -45,6 +45,9 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -67,6 +70,10 @@
     <ProjectReference Include="..\MakeChange\MakeChange.csproj">
       <Project>{0e657c5f-972e-47fd-a63d-21b8e7bf8230}</Project>
       <Name>MakeChange</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OperatorJumble\OperatorJumble.csproj">
+      <Project>{7fe9ef88-e9d7-4528-bc4b-ea86efa3643a}</Project>
+      <Name>OperatorJumble</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoupServings\SoupServings.csproj">
       <Project>{b92ec201-baf3-407b-9b35-1fdcf4074ea5}</Project>
