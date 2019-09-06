@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CodingChallengeFramework;
 using SoupServings;
 using MakeChange;
+using FewestPizzas;
 
 namespace CCTests
 {
@@ -57,5 +58,21 @@ namespace CCTests
 
         }
 
+        [TestMethod]
+        public void NewPizzas()
+        {
+            var pp = PizzaPreferences.RandomJson(6);
+            Console.WriteLine(pp);
+        }
+
+        [TestMethod]
+        public void SimplePizza()
+        {
+            var pizza = new FirstToppingShare();
+            var npeople = 7;
+            var prefs = PizzaPreferences.Random(npeople);
+            var npizzas = pizza.Run(3, prefs);
+            Console.WriteLine($"Ordering {npizzas} for {npeople} people");
+        }
     }
 }

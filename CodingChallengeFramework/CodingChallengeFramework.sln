@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeChange", "MakeChange\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorJumble", "OperatorJumble\OperatorJumble.csproj", "{7FE9EF88-E9D7-4528-BC4B-EA86EFA3643A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FewestPizzas", "FewestPizzas\FewestPizzas.csproj", "{CAA9E6C3-89F5-4D34-8882-DBB74CD1072E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7FE9EF88-E9D7-4528-BC4B-EA86EFA3643A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FE9EF88-E9D7-4528-BC4B-EA86EFA3643A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FE9EF88-E9D7-4528-BC4B-EA86EFA3643A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA9E6C3-89F5-4D34-8882-DBB74CD1072E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA9E6C3-89F5-4D34-8882-DBB74CD1072E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA9E6C3-89F5-4D34-8882-DBB74CD1072E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA9E6C3-89F5-4D34-8882-DBB74CD1072E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
