@@ -7,7 +7,8 @@ using CodingChallengeFramework;
 
 namespace FewestPizzas
 {
-    public class FirstToppingShare
+    // TODO: fill in your code in the Run function and give this class a unique name
+    public class TopFavoritesShare : IFewestPizzas
     {
         public int Run(int maxToppings, PizzaPreferences[] prefs)
         {

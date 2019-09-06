@@ -32,6 +32,10 @@ namespace CodingChallengeFramework
             {
                 c = new OperatorJumbleChallenge();
             }
+            else if (args[0].Contains("pizza"))
+            {
+                c = new FewestPizzasChallenge();
+            }
             c.Run(args.Skip(1));
         }
     }

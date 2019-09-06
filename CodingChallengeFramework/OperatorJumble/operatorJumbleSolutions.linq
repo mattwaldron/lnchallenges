@@ -1,5 +1,5 @@
 <Query Kind="Program">
-  <Reference Relative="bin\Release\OperatorJumble.dll"></Reference>
+  <Reference Relative="bin\Release\OperatorJumble.dll">&lt;MyDocuments&gt;\codingChallenge\CodingChallengeFramework\OperatorJumble\bin\Release\OperatorJumble.dll</Reference>
   <Reference>C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF\PresentationCore.dll</Reference>
   <Reference>C:\Windows\Microsoft.NET\Framework\v4.0.30319\WPF\PresentationFramework.dll</Reference>
   <Reference>C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.Xaml.dll</Reference>
@@ -19,8 +19,7 @@ void Main()
     
     var solns = vals.Where(kv => kv.Key.val > 0)
                     .Where(kv => (kv.Key.max - kv.Key.min) == 8)
-                    .OrderBy(kv => kv.Key.val)
-                    .Take(11111);
+                    .OrderBy(kv => kv.Key.val);
     foreach (var s in solns)
     {
         $"{s.Key.val}, {s.Value}".Dump();

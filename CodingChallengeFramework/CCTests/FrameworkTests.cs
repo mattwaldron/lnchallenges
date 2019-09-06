@@ -68,7 +68,7 @@ namespace CCTests
         [TestMethod]
         public void SimplePizza()
         {
-            var pizza = new FirstToppingShare();
+            var pizza = new TopFavoritesShare();
             var npeople = 7;
             var prefs = PizzaPreferences.Random(npeople);
             var npizzas = pizza.Run(3, prefs);
