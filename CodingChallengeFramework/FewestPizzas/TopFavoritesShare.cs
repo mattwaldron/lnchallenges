@@ -12,7 +12,7 @@ namespace FewestPizzas
     {
         public int Run(int maxToppings, PizzaPreferences[] prefs)
         {
-            return prefs.Select(p => p.favorites
+            return prefs.Select(p => p.likes
                                       .OrderBy(x => x).First())
                         .Distinct()
                         .Count();

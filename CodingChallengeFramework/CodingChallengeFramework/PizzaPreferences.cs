@@ -36,26 +36,23 @@ namespace CodingChallengeFramework
 
     public class PizzaPreferences
     {
-        public List<PizzaTopping> favorites;
-        public List<PizzaTopping> dislikes;
+        public List<PizzaTopping> likes;
+        public List<PizzaTopping> hates;
 
         public static PizzaPreferences operator +(PizzaPreferences a, PizzaPreferences b)
         {
             var pref = new PizzaPreferences();
-            pref.favorites = a.favorites.Select(x => x).ToList();
-            pref.favorites.AddRange(b.favorites);
+            pref.likes = a.likes.Select(x => x).ToList();
+            pref.likes.AddRange(b.likes);
 
-            pref.dislikes = a.dislikes.Select(x => x).ToList();
-            pref.dislikes.AddRange(b.dislikes);
+            pref.hates = a.hates.Select(x => x).ToList();
+            pref.hates.AddRange(b.hates);
             return pref;
         }
 
-        public static PizzaPreferences [] Random(int n, Int32 randomSeed = Int32.MaxValue)
+        public static PizzaPreferences [] Random(int n, int nlikes = 2, int nhates = 1, int randomSeed = int.MaxValue)
         {
-            const int nfavs = 2;
-            const int nhates = 1;
-
-            if (randomSeed == Int32.MaxValue)
+            if (randomSeed == int.MaxValue)
             {
                 randomSeed = Environment.TickCount;
             }
@@ -67,8 +64,8 @@ namespace CodingChallengeFramework
             foreach (var i in Enumerable.Range(0, n))
             {
                 prefs[i] = new PizzaPreferences();
-                prefs[i].favorites = Enumerable.Repeat<Func<int>>(() => rand.Next(toppings.Length), nfavs).Select(v => (PizzaTopping)toppings.GetValue(v())).ToList();
-                prefs[i].dislikes = Enumerable.Repeat<Func<int>>(() => rand.Next(toppings.Length), nhates).Select(v => (PizzaTopping)toppings.GetValue(v())).Where(t => !prefs[i].favorites.Contains(t)).ToList();
+                prefs[i].likes = Enumerable.Repeat<Func<int>>(() => rand.Next(toppings.Length), nlikes).Select(v => (PizzaTopping)toppings.GetValue(v())).ToList();
+                prefs[i].hates = Enumerable.Repeat<Func<int>>(() => rand.Next(toppings.Length), nhates).Select(v => (PizzaTopping)toppings.GetValue(v())).Where(t => !prefs[i].likes.Contains(t)).ToList();
             }
             return prefs;
         }

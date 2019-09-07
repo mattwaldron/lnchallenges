@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -23,7 +24,9 @@ namespace CodingChallengeFramework
 
         public override void Run(IEnumerable<string> args)
         {
-            var maxToppings = Int32.Parse(args.First());
+            int nlikes = 2;
+            int nhates = 1;
+            var maxToppings = int.Parse(args.First());
 
             PizzaPreferences[] prefs;
             if (args.Skip(1).First().ToLower() == "random")
@@ -31,16 +34,20 @@ namespace CodingChallengeFramework
                 if (args.Count() >= 4)
                 {
                     prefs = PizzaPreferences.Random(int.Parse(args.Skip(2).First()),
+                                                    nlikes,
+                                                    nhates,
                                                     int.Parse(args.Skip(3).First()));
                 }
                 else
                 {
-                    prefs = PizzaPreferences.Random(int.Parse(args.Skip(2).First()));
+                    prefs = PizzaPreferences.Random(int.Parse(args.Skip(2).First()),
+                                                    nlikes,
+                                                    nhates);
                 }
             }
             else
             {
-                prefs = JsonConvert.DeserializeObject<PizzaPreferences[]>(args.Skip(1).Aggregate((a, b) => $"{a}{b}"));
+                prefs = JsonConvert.DeserializeObject<PizzaPreferences[]>(args.Skip(1).Aggregate((a, b) => $"{a}{b}"), new StringEnumConverter());
             }
 
             Console.WriteLine($"Testing FewestPizzas algorithms with max toppings {maxToppings} and preferences {JsonConvert.SerializeObject(prefs, Formatting.Indented, new StringEnumConverter())}");
