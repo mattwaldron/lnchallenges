@@ -74,5 +74,23 @@ namespace CCTests
             var npizzas = pizza.Run(3, prefs);
             Console.WriteLine($"Ordering {npizzas} for {npeople} people");
         }
+
+        [TestMethod]
+        public void PizzaCopy()
+        {
+            var p1 = new Pizza()
+            {
+                toppings = new List<PizzaTopping>()
+                {
+                    PizzaTopping.Anchovies,
+                    PizzaTopping.Bacon,
+                    PizzaTopping.BananaPeppers
+                }
+            };
+
+            var p2 = Pizza.Copy(p1);
+            p2.toppings[0] = PizzaTopping.Sausage;
+            CollectionAssert.AreNotEqual(p1.toppings, p2.toppings);
+        }
     }
 }

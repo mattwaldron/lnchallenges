@@ -32,6 +32,14 @@ namespace CodingChallengeFramework
     public class Pizza
     {
         public List<PizzaTopping> toppings;
+
+        public static Pizza Copy(Pizza p)
+        {
+            return new Pizza()
+            {
+                toppings = p.toppings.ToList()
+            };
+        }
     }
 
     public class PizzaPreferences
