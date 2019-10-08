@@ -45,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MattClusterDislikes.cs" />
+    <Compile Include="MattMostPopularDescending.cs" />
+    <Compile Include="MattOptimizedCombos.cs" />
     <Compile Include="MattPizzaExtensions.cs" />
     <Compile Include="TopFavoritesShare.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

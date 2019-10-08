@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using Newtonsoft.Json.Converters;
 
 namespace FewestPizzas
 {
-    public class MattClusterDislikes : IFewestPizzas
+    public class MattOptimizedCombos : IFewestPizzas
     {
         public bool print = false;
 
@@ -137,21 +138,27 @@ namespace FewestPizzas
                 }
             }
 
+            var sw = new Stopwatch();
+            sw.Start();
 
             for (var i = minPizzas; i < prefs.Length; i++)
             {
-                var countWithTopPizzas = NCR(pizzaSatisfaction.Keys.Count, minPizzas) - NCR(pizzaSatisfaction.Keys.Count - minPizzas, minPizzas);
-                var count = 0;
-                foreach (var pizzaSet in pizzaSatisfaction.Keys.OrderBy(k => pizzaSatisfaction[k].Count).Combinations(i))
+                //var countWithTopPizzas = NCR(pizzaSatisfaction.Keys.Count, minPizzas) - NCR(pizzaSatisfaction.Keys.Count - minPizzas, minPizzas);
+                //var count = 0;
+                foreach (var pizzaSet in pizzaSatisfaction.Keys.OrderByDescending(k => pizzaSatisfaction[k].Count).Combinations(i))
                 {
-                    if (count > countWithTopPizzas)
+                    if (sw.Elapsed > TimeSpan.FromSeconds(60))
+                    {
+                        return null;
+                    }
+                    /*if (count > countWithTopPizzas)
                     {
                         break;
-                    }
-                    if(PizzasOverlap(pizzaSet))
+                    }*/
+                    /*if(PizzasOverlap(pizzaSet))
                     {
                         continue;
-                    }
+                    }*/
                     if (pizzaSet.Select(p => pizzaSatisfaction[p]).Aggregate((a, b) => a.Union(b).ToList()).Count == prefs.Length)
                     {
                         if (print)
@@ -160,7 +167,7 @@ namespace FewestPizzas
                         }
                         return pizzaSet;
                     }
-                    count++;
+                    //count++;
                 }
             }
 

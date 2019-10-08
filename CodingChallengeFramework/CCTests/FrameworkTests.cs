@@ -115,16 +115,15 @@ namespace CCTests
         public void FewestPizzas_RandomGuests()
         {
             
-            var pizzaCalc = new MattClusterDislikes();
+            var pizzaCalc = new MattPopularDescending();
             var scale = Enum.GetValues(typeof(PizzaTopping)).Length;
             List<Pizza> pizzas = null;
-            //var seed = Environment.TickCount;
+            var seed = Environment.TickCount;
             
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < 1000; i++)
             {
-                var seed = 404613422 + 69;
                 var rand = new Random(seed + i);
-                var npeople = 1+ rand.Next(30);
+                var npeople = 1+ rand.Next(20);
                 var nlikes = 1 + rand.Next(scale / 2);
                 var nhates = rand.Next(scale / 4);
                 var ntoppings = 1 + rand.Next(scale / 4);
@@ -149,6 +148,42 @@ namespace CCTests
                     Console.WriteLine(JsonConvert.SerializeObject(pizzas, Formatting.Indented, new StringEnumConverter()));
                     Assert.Fail();
                 }
+            }
+        }
+
+        public void FewestPizzas_SpecificSeed()
+        {
+
+            var pizzaCalc = new MattOptimizedCombos();
+            var scale = Enum.GetValues(typeof(PizzaTopping)).Length;
+            List<Pizza> pizzas = null;
+
+            var seed = 404613422 + 69;
+            var rand = new Random(seed);
+            var npeople = 1 + rand.Next(30);
+            var nlikes = 1 + rand.Next(scale / 2);
+            var nhates = rand.Next(scale / 4);
+            var ntoppings = 1 + rand.Next(scale / 4);
+
+            var guests = PizzaPreferences.Random(npeople, nlikes, nhates, seed + 1);
+
+            File.WriteAllText("fewestPizzas.txt", $"seed: {seed}\nmaxToppings: {ntoppings}\nnlikes: {nlikes}\nnhates: {nhates}\n{JsonConvert.SerializeObject(guests, Formatting.Indented, new StringEnumConverter())}\n\n");
+
+            try
+            {
+                pizzas = pizzaCalc.PartyOrder(ntoppings, guests);
+                if (!guests.All(guest => pizzas.Any(pizza => guest.WillEat(pizza))))
+                {
+                    throw new Exception("What a terrible party!");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Failed to pick out pizzas for:");
+                Console.WriteLine(JsonConvert.SerializeObject(guests, Formatting.Indented, new StringEnumConverter()));
+                Console.WriteLine("Attempted:");
+                Console.WriteLine(JsonConvert.SerializeObject(pizzas, Formatting.Indented, new StringEnumConverter()));
+                Assert.Fail();
             }
         }
 
