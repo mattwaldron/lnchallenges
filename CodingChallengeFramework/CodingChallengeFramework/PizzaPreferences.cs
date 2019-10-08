@@ -72,8 +72,8 @@ namespace CodingChallengeFramework
             foreach (var i in Enumerable.Range(0, n))
             {
                 prefs[i] = new PizzaPreferences();
-                prefs[i].likes = Enumerable.Repeat<Func<int>>(() => rand.Next(toppings.Length), nlikes).Select(v => (PizzaTopping)toppings.GetValue(v())).ToList();
-                prefs[i].hates = Enumerable.Repeat<Func<int>>(() => rand.Next(toppings.Length), nhates).Select(v => (PizzaTopping)toppings.GetValue(v())).Where(t => !prefs[i].likes.Contains(t)).ToList();
+                prefs[i].likes = Enumerable.Repeat<Func<int>>(() => rand.Next(toppings.Length), nlikes).Select(v => (PizzaTopping)toppings.GetValue(v())).Distinct().ToList();
+                prefs[i].hates = Enumerable.Repeat<Func<int>>(() => rand.Next(toppings.Length), nhates).Select(v => (PizzaTopping)toppings.GetValue(v())).Where(t => !prefs[i].likes.Contains(t)).Distinct().ToList();
             }
             return prefs;
         }
