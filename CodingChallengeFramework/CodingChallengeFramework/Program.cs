@@ -36,6 +36,10 @@ namespace CodingChallengeFramework
             {
                 c = new FewestPizzasChallenge();
             }
+            else if (args[0].Contains("path"))
+            {
+                c = new HighestScorePathChallenge();
+            }
             c.Run(args.Skip(1));
         }
     }
