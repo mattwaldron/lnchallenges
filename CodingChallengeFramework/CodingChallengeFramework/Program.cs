@@ -36,9 +36,9 @@ namespace CodingChallengeFramework
             {
                 c = new FewestPizzasChallenge();
             }
-            else if (args[0].Contains("path"))
+            else if (args[0].Contains("matrix"))
             {
-                c = new HighestScorePathChallenge();
+                c = new MatrixTraversalChallenge();
             }
             c.Run(args.Skip(1));
         }

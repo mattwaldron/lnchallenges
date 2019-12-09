@@ -55,10 +55,14 @@ namespace CodingChallengeFramework
                         {
                             matrix[r, c] = -1;
                         }
+                        else
+                        {
+                            matrix[r, c] = (matrix[r, c] % 5) + 1;
+                        }
                     }
                 }
                 matrix[0, 0] = 0;
-                matrix[nrows, ncols] = 0;
+                matrix[nrows - 1, ncols - 1] = 0;
             }
 
             Console.WriteLine($"Testing MatrixTraversal algorithms with the following matrix");
@@ -102,7 +106,7 @@ namespace CodingChallengeFramework
                         total += matrix[r.Item1, r.Item2];
                     }
                 }
-                Console.WriteLine($"{q.GetType().Name} (in {sw.ElapsedMilliseconds} ms) << {total}points \n\t\tPath: {answer}");
+                Console.WriteLine($"{q.GetType().Name} (in {sw.ElapsedMilliseconds} ms) << {total} points \n\t\tPath: {answer}");
             }
         }
     }

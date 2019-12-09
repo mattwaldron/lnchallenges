@@ -7,8 +7,8 @@
     <ProjectGuid>{EC30198F-D6B3-422F-A403-33414F34F640}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HighestScorePath</RootNamespace>
-    <AssemblyName>HighestScorePath</AssemblyName>
+    <RootNamespace>MatrixScore</RootNamespace>
+    <AssemblyName>MatrixScore</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -50,6 +50,7 @@
     <Compile Include="MattPizzaExtensions.cs" />
     <Compile Include="TopFavoritesShare.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZackPizza.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodingChallengeFramework\CodingChallengeFramework.csproj">
