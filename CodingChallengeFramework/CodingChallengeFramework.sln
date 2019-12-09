@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorJumble", "OperatorJ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FewestPizzas", "FewestPizzas\FewestPizzas.csproj", "{CAA9E6C3-89F5-4D34-8882-DBB74CD1072E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighestScorePath", "HighestScorePath\HighestScorePath.csproj", "{EC30198F-D6B3-422F-A403-33414F34F640}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixScore", "MatixScore\MatrixScore.csproj", "{EC30198F-D6B3-422F-A403-33414F34F640}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

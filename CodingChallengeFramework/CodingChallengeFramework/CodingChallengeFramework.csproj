@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IHighestScorePath.cs" />
+    <Compile Include="IMatrix.cs" />
     <Compile Include="IFewestPizzas.cs" />
     <Compile Include="IMakeChange.cs" />
     <Compile Include="IMazeSolver.cs" />

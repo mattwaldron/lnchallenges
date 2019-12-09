@@ -8,10 +8,10 @@ using CodingChallengeFramework;
 namespace HighestScorePath
 {
     // change the implementation of this class and give it a unique name!
-    public class DownUntilWall : IHighestScorePath
+    public class DownUntilWall : IMatrixSoulution
     {
         // the row is the first index
-        (int r, int c) Advance(int[,] grid, (int r, int c) pos)
+        (int, int) Advance(int[,] grid, (int r, int c) pos)
         {
             if (pos.r + 1 >= grid.GetLength(0) || grid[pos.r + 1, pos.c] == -1)
             {
@@ -26,24 +26,25 @@ namespace HighestScorePath
             return (pos.r + 1, pos.c);
         }
 
-        public int Run(int[,] grid)
+        public List<(int, int)> Run(int[,] grid, int m, int n)
         {
             int sum = 0;
-
-            (int r, int c) pos = (0, 0);
+            var path = new List<(int, int)>();
+            var pos = (0, 0);
             var end = (grid.GetLength(0) - 1, grid.GetLength(1) - 1);
             while (pos != end)
             {
+                path.Add(pos);
                 var next = Advance(grid, pos);
                 if (next == pos)
                 {
-                    return -1;
+                    return null;
                 }
                 pos = next;
-                sum += grid[pos.r, pos.c];
+                sum += grid[pos.Item1, pos.Item2];
             }
 
-            return sum;
+            return path;
         }
     }
 }
