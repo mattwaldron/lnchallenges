@@ -71,6 +71,10 @@
       <Project>{0e657c5f-972e-47fd-a63d-21b8e7bf8230}</Project>
       <Name>MakeChange</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MatrixScore\MatrixScore.csproj">
+      <Project>{ec30198f-d6b3-422f-a403-33414f34f640}</Project>
+      <Name>MatrixScore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OperatorJumble\OperatorJumble.csproj">
       <Project>{7fe9ef88-e9d7-4528-bc4b-ea86efa3643a}</Project>
       <Name>OperatorJumble</Name>

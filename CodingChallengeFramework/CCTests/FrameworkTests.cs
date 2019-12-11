@@ -10,6 +10,7 @@ using SoupServings;
 using MakeChange;
 using FewestPizzas;
 using System.IO;
+using MatrixScore;
 
 namespace CCTests
 {
@@ -237,6 +238,49 @@ namespace CCTests
             }
             Assert.AreEqual(ncr, (double)ncombos, 1);
             Console.WriteLine($"okay!");
+        }
+
+        int[,] GenerateMatrix(int nrows, int ncols, int seed = 0)
+        {
+            Random random;
+            if (seed == 0)
+            {
+                random = new Random();
+            }
+            else
+            {
+                random = new Random(seed);
+            }
+
+            var matrix = new int[nrows, ncols];
+            for (var r = 0; r < nrows; r++)
+            {
+                for (var c = 0; c < ncols; c++)
+                {
+                    matrix[r, c] = random.Next(0, 20);
+                    if (matrix[r, c] == 0)
+                    {
+                        matrix[r, c] = -1;
+                    }
+                    else
+                    {
+                        matrix[r, c] = (matrix[r, c] % 5) + 1;
+                    }
+                }
+            }
+
+            matrix[0, 0] = 0;
+            matrix[nrows - 1, ncols - 1] = 0;
+            return matrix;
+        }
+    
+
+        [TestMethod]
+        public void MatrixBinTree()
+        {
+            var matrix = GenerateMatrix(8, 8, 123456);
+            var solver = new MattBinTreeSearch();
+            var sln = solver.Run(matrix, 8, 8);
         }
     }
 }
