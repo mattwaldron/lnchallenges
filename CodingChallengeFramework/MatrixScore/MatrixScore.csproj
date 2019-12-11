@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusterSolution.cs" />
     <Compile Include="DownUntilWall.cs" />
     <Compile Include="MattBinTreeOneline.cs" />
     <Compile Include="MattBinTreeSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZackTraversalAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodingChallengeFramework\CodingChallengeFramework.csproj">
