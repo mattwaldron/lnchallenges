@@ -40,6 +40,10 @@ namespace CodingChallengeFramework
             {
                 c = new MatrixTraversalChallenge();
             }
+            else if (args[0].Contains("optimalp"))
+            {
+                c = new OptimalPayloadsChallenge();
+            }
             c.Run(args.Skip(1));
         }
     }

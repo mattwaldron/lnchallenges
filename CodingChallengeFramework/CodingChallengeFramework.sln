@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FewestPizzas", "FewestPizza
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixScore", "MatrixScore\MatrixScore.csproj", "{EC30198F-D6B3-422F-A403-33414F34F640}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptimalPayloads", "OptimalPayloads\OptimalPayloads.csproj", "{72C1E0F0-88E8-416C-9EE5-5A82E9BF1E97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{EC30198F-D6B3-422F-A403-33414F34F640}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC30198F-D6B3-422F-A403-33414F34F640}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC30198F-D6B3-422F-A403-33414F34F640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C1E0F0-88E8-416C-9EE5-5A82E9BF1E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C1E0F0-88E8-416C-9EE5-5A82E9BF1E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C1E0F0-88E8-416C-9EE5-5A82E9BF1E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C1E0F0-88E8-416C-9EE5-5A82E9BF1E97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
