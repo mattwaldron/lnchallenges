@@ -16,6 +16,13 @@ namespace CodingChallengeFramework
 
     public class OptimalPayloadsChallenge : Challenge
     {
+        public static uint ComputeCost(List<(uint index, uint length)> result, uint payloadCost, uint elementCost)
+        {
+            var payloads = result.Count * payloadCost;
+            var elements = result.Select(r => r.length * elementCost).Aggregate((uint)0, (a, b) => a + b);
+            return (uint)(payloads + elements);
+        }
+
         [ImportMany(typeof(IOptimalPayloads), AllowRecomposition = true)]
         protected IOptimalPayloads[] payloadOptimizers = null;
 
@@ -80,7 +87,7 @@ namespace CodingChallengeFramework
                 {
                     var result = q.Run(maxPayload, payloadCost, elementCost, indices);
                     var npayloads = result.Count;
-                    answer = $"npayloads = {npayloads}, cost = {npayloads*payloadCost + result.Aggregate((a, b) => (0, a.length + b.length)).length*elementCost}";
+                    answer = $"npayloads = {npayloads}, cost = {ComputeCost(result, payloadCost, elementCost)}";
                 }
                 catch (Exception ex)
                 {

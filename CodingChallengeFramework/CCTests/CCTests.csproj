@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrameworkTests.cs" />
+    <Compile Include="MattOptPayloadTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +79,10 @@
     <ProjectReference Include="..\OperatorJumble\OperatorJumble.csproj">
       <Project>{7fe9ef88-e9d7-4528-bc4b-ea86efa3643a}</Project>
       <Name>OperatorJumble</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OptimalPayloads\OptimalPayloads.csproj">
+      <Project>{72c1e0f0-88e8-416c-9ee5-5a82e9bf1e97}</Project>
+      <Name>OptimalPayloads</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoupServings\SoupServings.csproj">
       <Project>{b92ec201-baf3-407b-9b35-1fdcf4074ea5}</Project>

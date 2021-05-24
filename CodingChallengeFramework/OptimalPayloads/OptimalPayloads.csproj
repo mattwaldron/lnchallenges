@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MattBruteForce.cs" />
+    <Compile Include="MattSplitLargestGaps.cs" />
     <Compile Include="NaiveMaxPayloads.cs" />
     <Compile Include="NaiveSingleElementPayloads.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

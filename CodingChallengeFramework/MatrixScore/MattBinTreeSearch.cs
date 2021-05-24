@@ -85,7 +85,7 @@ namespace MatrixScore
                     prunedLeaves.Add(g.OrderByDescending(f => f.total).First());
                 }
 
-                var bestLeaf = prunedLeaves.OrderByDescending(n => n.total).First();
+                var bestLeaf = prunedLeaves.OrderByDescending(nn => nn.total).First();
                 if (bestLeaf.pos == (m - 1, n - 1))
                 {
                     return GetPath(bestLeaf);

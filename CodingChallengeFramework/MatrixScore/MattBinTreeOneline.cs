@@ -28,7 +28,7 @@ namespace MatrixScore
                                .GroupBy(f => f.pos)
                                .Select(g => g.OrderByDescending(f => f.total)
                                              .First())
-                               .OrderByDescending(n => n.total)
+                               .OrderByDescending(nn => nn.total)
                                .ToList();
                 var bestLeaf = leaves.First();
                 if (bestLeaf.pos == (m-1, n-1)) {
