@@ -44,6 +44,10 @@ namespace CodingChallengeFramework
             {
                 c = new OptimalPayloadsChallenge();
             }
+            else if (args[0].Contains("crackerBarrel"))
+            {
+                c = new CrackerBarrelChallenge();
+            }
             c.Run(args.Skip(1));
         }
     }

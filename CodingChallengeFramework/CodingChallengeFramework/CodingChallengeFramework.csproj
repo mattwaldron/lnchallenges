@@ -53,6 +53,7 @@
     <Compile Include="IMakeChange.cs" />
     <Compile Include="IMazeSolver.cs" />
     <Compile Include="IChallenge.cs" />
+    <Compile Include="ICrackerBarrel.cs" />
     <Compile Include="ISoupServings.cs" />
     <Compile Include="IOptimalPayloads.cs" />
     <Compile Include="MazeGenerator.cs" />
