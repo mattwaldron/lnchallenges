@@ -51,4 +51,8 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy C:\Phil\CodeChallanges2\CodingChallengeFramework\CrackerBarrel\bin\Debug\CrackerBarrel.dll C:\Phil\CodeChallanges2\CodingChallengeFramework\CodingChallengeFramework\bin\Debug\CrackerBarrel.dll
+copy C:\Phil\CodeChallanges2\CodingChallengeFramework\CrackerBarrel\bin\Debug\CrackerBarrel.pdb C:\Phil\CodeChallanges2\CodingChallengeFramework\CodingChallengeFramework\bin\Debug\CrackerBarrel.pdb</PostBuildEvent>
+  </PropertyGroup>
 </Project>
